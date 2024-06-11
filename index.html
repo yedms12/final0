@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@import url('https://cdn.jsdelivr.net/gh/neodgm/neodgm-webfont@1.600/neodgm/style.css');
+html{ font-family: 'NeoDunggeunmo'; }
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h1{font-family: 'NeoDunggeunmo'; color: #0057FF; font-weight: 400; padding-top: 50px; font-size: 3rem;}
+
+       
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        
+        .responsive-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            transition: transform 1s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+
+        
+        .scroll-animation.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .padding1s {padding-right: 400px; padding-top: 100px;}
+        .padding2s {padding-top: 100px; padding-left: 600px; max-width: 28%;}
+        .padding3s {padding-right: 400px; padding-top: 100px;}
+        .padding4s {padding-right: 450px; padding-top: 60px; max-width: 35%; padding-bottom: 200px;}
+        .round-button {
+            background-color: #1400FF;
+            padding-top: 150px;
+            color: white;
+            border: none;
+            padding: 30px 50px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'NeoDunggeunmo';
+            font-size: 30px;
+            margin: 20px 2px;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        
+        .round-button:hover {
+            transform: scale(1.1);
+            background-color: #1400FF;
+        }
+
+
+    </style>
+</head>
+<body style="background-color: black;">
+    <div class="container">
+    	<h1>"DROPPER 상시 모집중"</h1>
+        <img src="1s.png" alt="1s" class="responsive-image scroll-animation padding1s">
+        <img src="2s.png" alt="2s" class="responsive-image scroll-animation padding2s">
+        <img src="3s.png" alt="3s" class="responsive-image scroll-animation padding3s">
+        <img src="4s.png" alt="4s" class="responsive-image scroll-animation padding4s">
+        <button class="round-button" id="navigate-button">드라퍼 더 알아보기</button>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll('.scroll-animation');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    } else {
+                        entry.target.classList.remove('show');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            images.forEach(image => {
+                observer.observe(image);
+
+            });
+            document.getElementById('navigate-button').addEventListener('click', function() {
+                window.location.href = 'https://yedms12.github.io/final/'; // 이동할 페이지 URL을 입력하세요
+            });
+        });
+    </script>
+</body>
+</html>
